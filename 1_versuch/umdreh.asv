@@ -1,0 +1,13 @@
+clear, clc
+prompt = 'Geben Sie bitte einen Vektor:  ';
+
+x = input(prompt)
+
+fprintf(gegebener )
+
+y = drehen(x)
+
+
+function y = drehen(x)
+    y = flip(x);
+end
