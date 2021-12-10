@@ -16,11 +16,14 @@ Determinante_von_A = 1;  A=2; a=3; DiesIstDasErgebnis=4;
 %% V-1.2
 clear, clc
  
+prompt = 'Geben Sie bitte eine n:  ';
 
-x = meineSume(19)
+x = input(prompt);
+y = meineSume(x);
 
 % Funktionen
+disp(['y = ', num2str(y)])
 
-function x = meineSume(n)
-    x = sum(1:n);
+function y = meineSume(n)
+    y = sum(1:n);
 end
