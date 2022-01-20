@@ -54,7 +54,7 @@ plot(x,y)
 title('V 2.3')
 % D-2.7: Kreis sieht elliptisch aus
 % D-2.8 
-%axis equal  % x- und y-Achse sehen genauso aus
+axis equal  % x- und y-Achse sehen genauso aus
 %axis image  % wie beim Befehl "axis equal" aber die Plotbox wird eng um die Daten angepasst.
 %axis square % aktuellen x- und y-Achse werden wie ein Viereck gezeigt 
 %axis normal
@@ -70,7 +70,7 @@ schritt = pi/8;
 x = x1:schritt:x2;
 xn = x1:schritt/4:x2;
 figure(1)
-plot(x,f(x), xn, f(xn))
+plot(x,f(x), 'k--')%, xn, f(xn))
 legend(  [num2str(length(x)),' Punkte'],  [num2str(length(xn)),' Punkte'])
 xlabel('x')
 ylabel('y =3sin(x)')
@@ -85,7 +85,7 @@ x2 = 4*pi;
 schritt = pi/8; 
 x = x1:schritt:x2;
 figure(1)
-plot(x,f(x), x, 2*cos(x)) 
+plot(x,f(x),'b-o', x, 2*cos(x)) 
 title(['Mehrere Funktionen in einem Diagramm: ', num2str(length(x)), ' Punkte'])
 legend( 'y1 =3sin(x)', 'y2 = 2sin(x)')
 xlabel('x')
@@ -127,10 +127,10 @@ y = exp(x);
 
 figure(1)
 plot(x,y)
-%semilogy(x,y)
+semilogy(x,y)
 %semilogx(x,y)
 %loglog(x,y)
-xlabel('x')
+%xlabel('x')
 ylabel('y=exp(x)')
 grid on
 
@@ -166,7 +166,7 @@ close all
 [X, Y] = meshgrid(-1:0.1:1, -1:0.1:1);
 F = f3d(X,Y);
 surf(X,Y,F)
-colormap('hot')
+%colormap('cool')
 %%
 figure(2)
 g = sinc(2.*sqrt(X.^2+Y.^2));
@@ -174,14 +174,14 @@ surf(X,Y, g)
 colormap('spring')
 %%
 figure(3)
-h = sinc(X.*2).*sin(Y.*2);
+h = sinc(X.*2).*sinc(Y.*2);
 surf(X,Y, h)
-colormap('cool')
+colormap('hot')
 
 %% D-2.21
 close all
 mesh(X,Y,F)
-colormap('hot')
+%colormap('hot')
 
 %% D-2.22
 clc
@@ -199,8 +199,8 @@ imshow(lena')
 figure(2)
 imshow(einstein')
 %% c: 0->schwarz, 1-> Weiß (double) / uint8: 0-255
-close all 
-k = 1.5;
+%close all 
+k = 1.2;
 figure(1)
 imshow(lena.*k)
 figure(2)
@@ -221,10 +221,10 @@ einstein_noisy = einstein+noise;
 imshow([einstein,einstein_noisy])
 %% g
 close all
-A = A/max(max(A));
-B = B/max(max(B));
-C = C/max(max(C));
-montage([A, B, C, A.*C])
+A1 = A/max(max(A));
+B1 = B/max(max(B));
+C1 = C/max(max(C));
+montage([A1, B1, C1, B*A, A*C])
 %% D-2.23
 close all
 %einzelne Farbkanaele multiplizieren
@@ -233,7 +233,7 @@ faktor_rot = 0.8; %0 %nur grün
 faktor_gruen = 2; %1 %nur grün
 faktor_blau = 0.2;%0 %nur gün
 %Rot
-mod_peppers(:,:,1) = peppers(:,:,1)*faktor_rot;
+mod_peppers(:,:,1) = peppers(:,:,1)*faktor_rot+1;
 %Gruen
 mod_peppers(:,:,2) = peppers(:,:,2)*faktor_gruen;
 %Blau
